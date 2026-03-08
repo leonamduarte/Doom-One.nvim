@@ -33,12 +33,15 @@ function M.get(palette, config)
     ["@lsp.type.namespace"] = { link = "@module" },
     ["@lsp.type.number"] = { link = "@number" },
     ["@lsp.type.operator"] = { link = "@operator" },
-    ["@lsp.type.parameter"] = { link = "@variable.parameter" },
-    ["@lsp.type.property"] = { link = "@property" },
+    ["@lsp.type.parameter"] = { fg = palette.orange },
+    ["@lsp.type.property"] = { fg = palette.cyan },
     ["@lsp.type.selfKeyword"] = { link = "@variable.builtin" },
     ["@lsp.type.typeAlias"] = { link = "@type.definition" },
     ["@lsp.type.unresolvedReference"] = { sp = palette.red, undercurl = true },
-    ["@lsp.type.variable"] = {},
+    ["@lsp.type.variable"] = { fg = palette.variable },
+    ["@lsp.type.function"] = { fg = palette.magenta },
+    ["@lsp.type.method"] = { fg = palette.cyan },
+    ["@lsp.type.type"] = { fg = palette.yellow },
 
     -- LSP Semantic Token Modifiers
     ["@lsp.typemod.class.defaultLibrary"] = { link = "@type.builtin" },
@@ -52,9 +55,9 @@ function M.get(palette, config)
     ["@lsp.typemod.operator.injected"] = { link = "@operator" },
     ["@lsp.typemod.string.injected"] = { link = "@string" },
     ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
-    ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
+    ["@lsp.typemod.variable.defaultLibrary"] = { fg = palette.magenta },
     ["@lsp.typemod.variable.injected"] = { link = "@variable" },
-    ["@lsp.typemod.variable.readonly"] = { link = "@constant" },
+    ["@lsp.typemod.variable.readonly"] = { fg = palette.violet },
   }
 end
 
