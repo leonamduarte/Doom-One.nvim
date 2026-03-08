@@ -223,3 +223,22 @@ return M
 - **NENHUM TESTE existente** no repositório atualmente
 - A paleta `variable` (#dcaeea em dark/darker/vibrant) já existe
 - O sistema de styles é configurável (italic, bold, etc)
+
+---
+
+## Tarefas Pendentes
+
+### 📝 Melhorias no README.md
+
+| Tarefa | Status | Prioridade |
+|--------|--------|------------|
+| Adicionar exemplo completo de instalação Lazy | ✅ Concluído | Alta |
+| Adicionar documentação de TODAS as configurações | ✅ Concluído | Alta |
+| Adicionar exemplos de uso de colors, highlights, styles | ✅ Concluído | Alta |
+| Adicionar lista completa de integrações disponíveis | ✅ Concluído | Alta |
+
+### 🔄 Alterações para Commit
+
+| Tarefa | Status | Prioridade |
+|--------|--------|------------|
+| Commit das mudanças no README.md | ⏳ Pendente | Alta |
