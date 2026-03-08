@@ -5,12 +5,12 @@ function M.get(palette, config)
 
   return {
     -- TreeSitter: Identifiers & Variables
-    ["@variable"] = vim.tbl_extend("force", { fg = palette.orange }, styles.variables or {}),
+    ["@variable"] = vim.tbl_extend("force", { fg = palette.variable }, styles.variables or {}),
     ["@variable.builtin"] = { fg = palette.magenta },
     ["@variable.parameter"] = { fg = palette.orange },
     ["@variable.parameter.builtin"] = { fg = palette.orange },
-    ["@variable.member"] = vim.tbl_extend("force", { fg = palette.fg }, styles.properties or {}),
-    ["@property"] = vim.tbl_extend("force", { fg = palette.fg }, styles.properties or {}),
+    ["@variable.member"] = vim.tbl_extend("force", { fg = palette.cyan }, styles.properties or {}),
+    ["@property"] = vim.tbl_extend("force", { fg = palette.cyan }, styles.properties or {}),
 
     -- TreeSitter: Constants
     ["@constant"] = { link = "Constant" },
@@ -49,9 +49,9 @@ function M.get(palette, config)
     ["@function.builtin"] = { fg = palette.magenta },
     ["@function.call"] = { fg = palette.magenta },
     ["@function.macro"] = { fg = palette.violet },
-    ["@function.method"] = { fg = palette.magenta },
+    ["@function.method"] = { fg = palette.cyan },
     ["@function.method.call"] = { fg = palette.magenta },
-    ["@constructor"] = { fg = palette.blue },
+    ["@constructor"] = { fg = palette.yellow },
     ["@operator"] = { link = "Operator" },
 
     -- TreeSitter: Keywords
@@ -100,7 +100,7 @@ function M.get(palette, config)
     ["@diff.delta"] = { fg = palette.yellow },
 
     -- TreeSitter: Markup (Markdown, RST, etc.)
-    ["@markup.heading"] = { fg = palette.blue, bold = true },
+    ["@markup.heading"] = { fg = palette.red, bold = true },
     ["@markup.heading.1"] = { fg = palette.red, bg = require("doom-one.palette").blend(palette.red, palette.bg, 0.1), bold = true },
     ["@markup.heading.2"] = { fg = palette.orange, bg = require("doom-one.palette").blend(palette.orange, palette.bg, 0.1), bold = true },
     ["@markup.heading.3"] = { fg = palette.yellow, bg = require("doom-one.palette").blend(palette.yellow, palette.bg, 0.1), bold = true },
@@ -114,7 +114,7 @@ function M.get(palette, config)
     ["@markup.link"] = { fg = palette.cyan },
     ["@markup.link.label"] = { fg = palette.blue, underline = true },
     ["@markup.link.url"] = { fg = palette.dark_cyan, underline = true },
-    ["@markup.raw"] = { fg = palette.teal },
+    ["@markup.raw"] = { bg = palette.base3 },
     ["@markup.raw.block"] = { fg = palette.teal },
     ["@markup.list"] = { fg = palette.blue },
     ["@markup.list.checked"] = { fg = palette.green },
