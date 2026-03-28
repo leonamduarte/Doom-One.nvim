@@ -1,13 +1,13 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/bashln/Doom-One.nvim/main/assets/logo.png" alt="Doom One" width="200" />
+  <img src="https://raw.githubusercontent.com/paesmont/Doom-One.nvim/main/assets/logo.png" alt="Doom One" width="200" />
   <h1>Doom-One.nvim</h1>
   <p>
     Um port fiel e vibrante do tema <b>Doom One</b> do Doom Emacs para o Neovim.
   </p>
 
   <p>
-    <a href="https://github.com/bashln/Doom-One.nvim/stargazers"><img src="https://img.shields.io/github/stars/bashln/Doom-One.nvim?style=for-the-badge&logo=github&color=51afef&logoColor=282c34" alt="Stars" /></a>
-    <a href="https://github.com/bashln/Doom-One.nvim/blob/main/LICENSE"><img src="https://img.shields.io/github/license/bashln/Doom-One.nvim?style=for-the-badge&logo=opensourceinitiative&color=98be65&logoColor=282c34" alt="License" /></a>
+    <a href="https://github.com/paesmont/Doom-One.nvim/stargazers"><img src="https://img.shields.io/github/stars/paesmont/Doom-One.nvim?style=for-the-badge&logo=github&color=51afef&logoColor=282c34" alt="Stars" /></a>
+    <a href="https://github.com/paesmont/Doom-One.nvim/blob/main/LICENSE"><img src="https://img.shields.io/github/license/paesmont/Doom-One.nvim?style=for-the-badge&logo=opensourceinitiative&color=98be65&logoColor=282c34" alt="License" /></a>
   </p>
 </div>
 
@@ -42,7 +42,7 @@
 -- No seu arquivo de plugins (ex: lua/plugins.lua ou lazy-lock.json)
 return {
   {
-    "bashln/Doom-One.nvim",
+    "paesmont/Doom-One.nvim",
     lazy = false,
     priority = 1000,
     opts = {
@@ -60,7 +60,7 @@ return {
 
 ```lua
 use({
-  "bashln/Doom-One.nvim",
+  "paesmont/Doom-One.nvim",
   config = function()
     require("doom-one").setup()
     vim.cmd.colorscheme("doom-one")
@@ -71,7 +71,7 @@ use({
 ### [vim-plug](https://github.com/junegunn/vim-plug)
 
 ```vim
-Plug 'bashln/Doom-One.nvim'
+Plug 'paesmont/Doom-One.nvim'
 
 " No seu init.lua ou init.vim
 lua << EOF
