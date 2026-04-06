@@ -55,8 +55,8 @@ local plugin_require_map = {
 local function _plugin_available(plugin_repo)
   local mod_name = plugin_require_map[plugin_repo]
   if mod_name then
-    local ok, _ = pcall(require, mod_name)
-    if ok then
+    local mod_ok, _ = pcall(require, mod_name)
+    if mod_ok then
       return true
     end
   end
