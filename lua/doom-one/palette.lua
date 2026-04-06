@@ -132,8 +132,20 @@ function M.get_palette(background)
 end
 
 local function hex_to_rgb(hex)
+  if type(hex) ~= "string" then
+    return nil
+  end
   hex = hex:gsub("#", "")
-  return tonumber("0x" .. hex:sub(1, 2)), tonumber("0x" .. hex:sub(3, 4)), tonumber("0x" .. hex:sub(5, 6))
+  if #hex ~= 6 then
+    return nil
+  end
+  local r = tonumber("0x" .. hex:sub(1, 2))
+  local g = tonumber("0x" .. hex:sub(3, 4))
+  local b = tonumber("0x" .. hex:sub(5, 6))
+  if r == nil or g == nil or b == nil then
+    return nil
+  end
+  return r, g, b
 end
 
 local function rgb_to_hex(r, g, b)
@@ -144,9 +156,15 @@ function M.blend(foreground, background, alpha)
   if background == "NONE" then
     return "NONE"
   end
+  if type(foreground) ~= "string" then
+    return foreground
+  end
   alpha = alpha or 0.15
   local r1, g1, b1 = hex_to_rgb(foreground)
   local r2, g2, b2 = hex_to_rgb(background)
+  if r1 == nil or r2 == nil then
+    return foreground
+  end
   local r = math.floor(r1 * alpha + r2 * (1 - alpha))
   local g = math.floor(g1 * alpha + g2 * (1 - alpha))
   local b = math.floor(b1 * alpha + b2 * (1 - alpha))

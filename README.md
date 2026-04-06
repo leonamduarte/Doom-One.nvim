@@ -8,6 +8,11 @@
   <p>
     <a href="https://github.com/bashln/Doom-One.nvim/stargazers"><img src="https://img.shields.io/github/stars/bashln/Doom-One.nvim?style=for-the-badge&logo=github&color=51afef&logoColor=282c34" alt="Stars" /></a>
     <a href="https://github.com/bashln/Doom-One.nvim/blob/main/LICENSE"><img src="https://img.shields.io/github/license/bashln/Doom-One.nvim?style=for-the-badge&logo=opensourceinitiative&color=98be65&logoColor=282c34" alt="License" /></a>
+    <a href="https://github.com/bashln/Doom-One.nvim/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/bashln/Doom-One.nvim/ci.yml?style=for-the-badge&logo=githubactions&color=51afef&logoColor=282c34" alt="CI" /></a>
+  </p>
+
+  <p>
+    <strong>Requer Neovim >= 0.8.0</strong>
   </p>
 </div>
 
@@ -22,8 +27,10 @@
 - 🎨 **4 Variantes**: Dark, Darker, Vibrant e Light.
 - 🚀 **Performance**: Escrito inteiramente em Lua, otimizado para o Neovim moderno.
 - 🛠️ **Modular**: Estrutura organizada e fácil de estender.
-- 🔌 **Integrações**: Suporte nativo para os plugins mais populares (LazyVim compatível).
+- 🔌 **Integrações**: Suporte nativo para 21 plugins populares (LazyVim compatível).
 - ⚙️ **Customizável**: Ajuste estilos de fontes (itálico/negrito) e cores facilmente.
+- 🔄 **Comando `:DoomOne`**: Troque variantes em tempo real sem editar config.
+- 🏥 **Healthcheck**: `:checkhealth doom-one` para diagnóstico completo.
 
 ## 🌈 Sabores
 
@@ -82,7 +89,7 @@ EOF
 
 ## ⚙️ Configuração
 
-O `setup` é opcional. Se você não chamar, o tema usará os padrões abaixo:
+O `setup` é **opcional**. Se você não chamar, o tema usará os padrões abaixo com todas as integrações habilitadas:
 
 ```lua
 require("doom-one").setup({
@@ -122,7 +129,7 @@ require("doom-one").setup({
 - **Valores**: `true` | `false`
 
 #### `background` (string)
-- **Padrão**: `"dark"`
+- **Padrão**: `nil` (usa `vim.o.background`)
 - **Descrição**: Define a variante do tema
 - **Valores**: `"dark"` | `"darker"` | `"vibrant"` | `"light"`
 
@@ -218,6 +225,7 @@ styles = {
 #### `integrations` (table)
 - **Padrão**: `{ all = true }`
 - **Descrição**: Habilita integrações com plugins externos
+- **Nota**: Deve ser uma table. Valores não-table são rejeitados com warning.
 
 **Integrações disponíveis:**
 
@@ -261,6 +269,36 @@ integrations = {
   cmp = true,
 }
 ```
+
+## 🔄 Comando `:DoomOne`
+
+Controle o tema em tempo real sem editar sua config:
+
+```vim
+:DoomOne              " Cicla entre as variantes (dark → darker → vibrant → light)
+:DoomOne cycle        " Mesmo que acima
+:DoomOne set vibrant  " Define uma variante específica
+:DoomOne info         " Mostra a variante atual e configurações
+```
+
+Tab completion funciona para ações e variantes.
+
+## 🏥 Healthcheck
+
+Verifique se tudo está configurado corretamente:
+
+```vim
+:checkhealth doom-one
+```
+
+O healthcheck verifica:
+- Versão do Neovim
+- `termguicolors` habilitado
+- Carregamento de módulos
+- Variante de background válida
+- Cores do palette
+- Colorscheme ativo
+- Disponibilidade dos plugins integrados
 
 ## 🔌 Integrações
 
