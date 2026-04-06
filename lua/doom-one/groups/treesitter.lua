@@ -2,6 +2,8 @@ local M = {}
 
 function M.get(palette, config)
   local styles = config.styles or {}
+  local blend = require("doom-one.palette").blend
+  local bg = config.transparent and "NONE" or palette.bg
 
   return {
     -- TreeSitter: Identifiers & Variables
@@ -101,12 +103,12 @@ function M.get(palette, config)
 
     -- TreeSitter: Markup (Markdown, RST, etc.)
     ["@markup.heading"] = { fg = palette.red, bold = true },
-    ["@markup.heading.1"] = { fg = palette.red, bg = require("doom-one.palette").blend(palette.red, palette.bg, 0.1), bold = true },
-    ["@markup.heading.2"] = { fg = palette.orange, bg = require("doom-one.palette").blend(palette.orange, palette.bg, 0.1), bold = true },
-    ["@markup.heading.3"] = { fg = palette.yellow, bg = require("doom-one.palette").blend(palette.yellow, palette.bg, 0.1), bold = true },
-    ["@markup.heading.4"] = { fg = palette.green, bg = require("doom-one.palette").blend(palette.green, palette.bg, 0.1), bold = true },
-    ["@markup.heading.5"] = { fg = palette.blue, bg = require("doom-one.palette").blend(palette.blue, palette.bg, 0.1), bold = true },
-    ["@markup.heading.6"] = { fg = palette.magenta, bg = require("doom-one.palette").blend(palette.magenta, palette.bg, 0.1), bold = true },
+    ["@markup.heading.1"] = { fg = palette.red, bg = blend(palette.red, bg, 0.1), bold = true },
+    ["@markup.heading.2"] = { fg = palette.orange, bg = blend(palette.orange, bg, 0.1), bold = true },
+    ["@markup.heading.3"] = { fg = palette.yellow, bg = blend(palette.yellow, bg, 0.1), bold = true },
+    ["@markup.heading.4"] = { fg = palette.green, bg = blend(palette.green, bg, 0.1), bold = true },
+    ["@markup.heading.5"] = { fg = palette.blue, bg = blend(palette.blue, bg, 0.1), bold = true },
+    ["@markup.heading.6"] = { fg = palette.magenta, bg = blend(palette.magenta, bg, 0.1), bold = true },
     ["@markup.strong"] = { bold = true },
     ["@markup.italic"] = { italic = true },
     ["@markup.strikethrough"] = { strikethrough = true },

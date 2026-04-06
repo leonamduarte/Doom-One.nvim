@@ -25,10 +25,20 @@ M.defaults = {
   },
 }
 
-M.options = {}
+M.options = vim.tbl_deep_extend("force", {}, M.defaults)
 
 function M.setup(opts)
-  M.options = vim.tbl_deep_extend("force", M.defaults, opts or {})
+  opts = opts or {}
+
+  if opts.integrations ~= nil and type(opts.integrations) ~= "table" then
+    vim.notify(
+      string.format("[doom-one] integrations must be a table, got '%s'. Using default.", type(opts.integrations)),
+      vim.log.levels.WARN
+    )
+    opts.integrations = vim.deepcopy(M.defaults.integrations)
+  end
+
+  M.options = vim.tbl_deep_extend("force", M.defaults, opts)
 end
 
 return M

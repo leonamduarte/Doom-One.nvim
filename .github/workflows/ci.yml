@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Lua
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lua5.1
+
+      - name: Install Luacheck
+        run: |
+          sudo apt-get install -y luarocks
+          sudo luarocks install luacheck
+
+      - name: Run Luacheck
+        run: luacheck lua/ colors/
+
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install StyLua
+        run: |
+          curl -fsSL https://github.com/JohnnyMorganz/StyLua/releases/download/v0.20.0/stylua-linux.zip -o stylua.zip
+          unzip stylua.zip
+          chmod +x stylua
+          sudo mv stylua /usr/local/bin/
+
+      - name: Check formatting
+        run: stylua --check lua/ colors/
+
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Neovim
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget
+          wget -q https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.tar.gz
+          tar -xzf nvim-linux-x86_64.tar.gz
+          sudo mv nvim-linux-x86_64 /opt/nvim
+          echo "/opt/nvim/bin" >> $GITHUB_PATH
+
+      - name: Run smoke test
+        run: |
+          export NVIM_APPNAME=doom-one-test
+          mkdir -p ~/.local/share/nvim/site/pack/vendor/start
+          ln -s $(pwd) ~/.local/share/nvim/site/pack/vendor/start/doom-one
+          nvim --headless -c "lua require('doom-one').setup()" -c "lua require('doom-one').load()" -c "q" 2>&1 | tee /tmp/nvim.log
+          echo "Smoke test passed"

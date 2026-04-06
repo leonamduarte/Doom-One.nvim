@@ -7,7 +7,7 @@ function M.get(palette, config)
 end
 
 function M.theme(palette)
-  local colors = palette or require("doom-one.palette").get_palette()
+  local colors = palette or M._resolve_palette()
 
   return {
     normal = {
@@ -37,6 +37,14 @@ function M.theme(palette)
       c = { bg = colors.base1, fg = colors.base5 },
     },
   }
+end
+
+function M._resolve_palette()
+  local ok, config = pcall(require, "doom-one.config")
+  if ok and config.options and config.options.background then
+    return require("doom-one.palette").get_palette(config.options.background)
+  end
+  return require("doom-one.palette").get_palette(vim.o.background)
 end
 
 return M
