@@ -2,8 +2,8 @@ local M = {}
 
 M.config = require("doom-one.config")
 
-local valid_backgrounds = { dark = true, darker = true, vibrant = true, light = true }
-local variants = { "dark", "darker", "vibrant", "light" }
+local valid_backgrounds = { dark = true, darker = true, light = true }
+local variants = { "dark", "darker", "light" }
 
 function M.setup(opts)
   M.config.setup(opts)
@@ -85,7 +85,7 @@ function M._command_handler(opts)
       vim.notify(string.format("[doom-one] Set variant to '%s'", variant), vim.log.levels.INFO)
     else
       vim.notify(
-        string.format("[doom-one] Invalid variant '%s'. Valid: dark, darker, vibrant, light", variant),
+        string.format("[doom-one] Invalid variant '%s'. Valid: dark, darker, light", variant),
         vim.log.levels.ERROR
       )
     end

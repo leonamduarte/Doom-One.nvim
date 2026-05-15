@@ -24,7 +24,7 @@
 
 ## ✨ Características
 
-- 🎨 **4 Variantes**: Dark, Darker, Vibrant e Light.
+- 🎨 **3 Variantes**: Dark, Darker e Light.
 - 🚀 **Performance**: Escrito inteiramente em Lua, otimizado para o Neovim moderno.
 - 🛠️ **Modular**: Estrutura organizada e fácil de estender.
 - 🔌 **Integrações**: Suporte nativo para 21 plugins populares (LazyVim compatível).
@@ -37,9 +37,8 @@
 | Variante | Descrição |
 | --- | --- |
 | `dark` | O clássico Doom One (padrão). |
-| `darker` | Uma versão com fundo mais profundo e escuro. |
-| `vibrant` | Alto contraste inspirado no TokyoNight, mantendo a alma do Doom One. |
-| `light` | Uma variante clara elegante e legível. |
+| `darker` | Fundo mais profundo e escuro, mesmos acentos. |
+| `light` | Variante clara baseada no `doom-one-light-theme.el`. |
 
 ## 📦 Instalação
 
@@ -94,7 +93,7 @@ O `setup` é **opcional**. Se você não chamar, o tema usará os padrões abaix
 ```lua
 require("doom-one").setup({
   transparent = false, -- desabilita o fundo para transparência do terminal
-  background = "dark", -- "dark", "darker", "vibrant", "light"
+  background = "dark", -- "dark", "darker", "light"
   colors = {}, -- sobrescreve cores da paleta
   highlights = {}, -- sobrescreve grupos de destaque
   styles = {
@@ -131,7 +130,7 @@ require("doom-one").setup({
 #### `background` (string)
 - **Padrão**: `nil` (usa `vim.o.background`)
 - **Descrição**: Define a variante do tema
-- **Valores**: `"dark"` | `"darker"` | `"vibrant"` | `"light"`
+- **Valores**: `"dark"` | `"darker"` | `"light"`
 
 #### `colors` (table)
 - **Padrão**: `{}`
@@ -165,7 +164,7 @@ require("doom-one").setup({
 colors = {
   red = "#ff0000",
   blue = "#0000ff",
-  bg = "#1a1b26", -- Override fundo com variante vibrant
+  bg = "#1a1b26", -- Override de fundo customizado
 }
 ```
 
@@ -275,9 +274,9 @@ integrations = {
 Controle o tema em tempo real sem editar sua config:
 
 ```vim
-:DoomOne              " Cicla entre as variantes (dark → darker → vibrant → light)
+:DoomOne              " Cicla entre as variantes (dark → darker → light)
 :DoomOne cycle        " Mesmo que acima
-:DoomOne set vibrant  " Define uma variante específica
+:DoomOne set light    " Define uma variante específica
 :DoomOne info         " Mostra a variante atual e configurações
 ```
 

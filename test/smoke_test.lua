@@ -45,12 +45,6 @@ test("Load function works (darker)", function()
   doom_one.load()
 end)
 
-test("Load function works (vibrant)", function()
-  local doom_one = require("doom-one")
-  doom_one.setup({ background = "vibrant" })
-  doom_one.load()
-end)
-
 test("Load function works (light)", function()
   local doom_one = require("doom-one")
   doom_one.setup({ background = "light" })
@@ -104,7 +98,7 @@ end)
 
 test("Palette module returns valid palettes", function()
   local palette_mod = require("doom-one.palette")
-  for _, variant in ipairs({ "dark", "darker", "vibrant", "light" }) do
+  for _, variant in ipairs({ "dark", "darker", "light" }) do
     local p = palette_mod.get_palette(variant)
     assert(p.bg ~= nil, variant .. " palette missing bg")
     assert(p.fg ~= nil, variant .. " palette missing fg")

@@ -3,7 +3,7 @@ local M = {}
 ---@class DoomOneConfig
 M.defaults = {
   transparent = false,
-  background = nil, -- "dark", "light", "darker", "vibrant"
+  background = nil, -- "dark", "darker", "light"
   colors = {},
   highlights = {},
   styles = {

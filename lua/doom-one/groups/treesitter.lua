@@ -58,20 +58,20 @@ function M.get(palette, config)
 
     -- TreeSitter: Keywords
     ["@keyword"] = { link = "Keyword" },
-    ["@keyword.coroutine"] = { fg = palette.blue },
-    ["@keyword.function"] = { fg = palette.blue },
-    ["@keyword.operator"] = { fg = palette.blue },
+    ["@keyword.coroutine"] = { link = "@keyword" },
+    ["@keyword.function"] = { link = "@keyword" },
+    ["@keyword.operator"] = { link = "@keyword" },
     ["@keyword.import"] = { link = "Include" },
     ["@keyword.type"] = { fg = palette.yellow },
     ["@keyword.modifier"] = { fg = palette.yellow },
     ["@keyword.repeat"] = { link = "Repeat" },
-    ["@keyword.return"] = { fg = palette.blue },
+    ["@keyword.return"] = { link = "@keyword" },
     ["@keyword.debug"] = { link = "Debug" },
     ["@keyword.exception"] = { link = "Exception" },
     ["@keyword.conditional"] = { link = "Conditional" },
-    ["@keyword.conditional.ternary"] = { fg = palette.blue },
-    ["@keyword.directive"] = { fg = palette.blue },
-    ["@keyword.directive.define"] = { fg = palette.blue },
+    ["@keyword.conditional.ternary"] = { link = "@keyword.conditional" },
+    ["@keyword.directive"] = { link = "@keyword" },
+    ["@keyword.directive.define"] = { link = "@keyword.directive" },
 
     -- TreeSitter: Punctuation
     ["@punctuation.bracket"] = { fg = palette.base7 },

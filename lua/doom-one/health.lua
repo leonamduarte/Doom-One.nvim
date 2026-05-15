@@ -111,11 +111,11 @@ function M.check()
   end
 
   if opts.background then
-    local valid_bg = { dark = true, darker = true, vibrant = true, light = true }
+    local valid_bg = { dark = true, darker = true, light = true }
     if valid_bg[opts.background] then
       ok(string.format("Background variant: %s", opts.background))
     else
-      error(string.format("Invalid background variant: %s (expected dark, darker, vibrant, or light)", opts.background))
+      error(string.format("Invalid background variant: %s (expected dark, darker, or light)", opts.background))
     end
   else
     info("Background variant: default (uses vim.o.background)")

@@ -63,37 +63,6 @@ M.colors = {
     dark_cyan = "#5699af",
     variable = "#dcaeea",
   },
-  vibrant = {
-    bg = "#1a1b26", -- High contrast background
-    fg = "#c0caf5",
-
-    bg_alt = "#16161e",
-    fg_alt = "#565f89",
-
-    base0 = "#15161e",
-    base1 = "#1a1b26",
-    base2 = "#24283b",
-    base3 = "#292e42",
-    base4 = "#414868",
-    base5 = "#5b6268",
-    base6 = "#73797e",
-    base7 = "#9ca0a4",
-    base8 = "#dfdfdf",
-
-    grey = "#3f444a",
-    red = "#ff6c6b",
-    orange = "#da8548",
-    green = "#98be65",
-    teal = "#4db5bd",
-    yellow = "#ecbe7b",
-    blue = "#51afef",
-    dark_blue = "#2257a0",
-    magenta = "#c678dd",
-    violet = "#a9a1e1",
-    cyan = "#46d9ff",
-    dark_cyan = "#5699af",
-    variable = "#dcaeea",
-  },
   light = {
     bg = "#fafafa",
     fg = "#383a42",
@@ -106,9 +75,9 @@ M.colors = {
     base2 = "#dfdfdf",
     base3 = "#c6c7c7",
     base4 = "#9ca0a4",
-    base5 = "#424242",
-    base6 = "#2e2e2e",
-    base7 = "#1e1e1e",
+    base5 = "#383a42",
+    base6 = "#202328",
+    base7 = "#1c1f24",
     base8 = "#1b2229",
 
     grey = "#9ca0a4",
@@ -126,6 +95,13 @@ M.colors = {
     variable = "#a626a4",
   },
 }
+
+M.colors.dark.comment_color = M.colors.dark.base5
+M.colors.dark.keyword_color = M.colors.dark.blue
+M.colors.darker.comment_color = M.colors.darker.base5
+M.colors.darker.keyword_color = M.colors.darker.blue
+M.colors.light.comment_color = M.colors.light.base4
+M.colors.light.keyword_color = M.colors.light.red
 
 function M.get_palette(background)
   return M.colors[background] or M.colors.dark
