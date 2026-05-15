@@ -46,10 +46,7 @@ function M.get(palette, config)
       if ok then
         highlights = vim.tbl_deep_extend("force", highlights, mod.get(palette, config))
       else
-        vim.notify(
-          "[doom-one] Failed to load integration: " .. plugin,
-          vim.log.levels.WARN
-        )
+        vim.notify("[doom-one] Failed to load integration: " .. plugin, vim.log.levels.WARN)
       end
     end
   else
@@ -59,10 +56,7 @@ function M.get(palette, config)
         if ok then
           highlights = vim.tbl_deep_extend("force", highlights, mod.get(palette, config))
         else
-          vim.notify(
-            "[doom-one] Failed to load integration: " .. plugin,
-            vim.log.levels.WARN
-          )
+          vim.notify("[doom-one] Failed to load integration: " .. plugin, vim.log.levels.WARN)
         end
       end
     end

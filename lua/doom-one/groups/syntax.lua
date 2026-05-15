@@ -14,7 +14,11 @@ function M.get(palette, config)
     Identifier = vim.tbl_extend("force", { fg = palette.variable }, styles.variables or {}),
     Function = vim.tbl_extend("force", { fg = palette.magenta }, styles.functions or {}),
     Statement = { fg = palette.keyword_color },
-    Conditional = vim.tbl_extend("force", { fg = palette.keyword_color }, styles.conditionals or {}),
+    Conditional = vim.tbl_extend(
+      "force",
+      { fg = palette.keyword_color },
+      styles.conditionals or {}
+    ),
     Repeat = vim.tbl_extend("force", { fg = palette.keyword_color }, styles.loops or {}),
     Label = { fg = palette.violet },
     Operator = vim.tbl_extend("force", { fg = palette.blue }, styles.operators or {}),

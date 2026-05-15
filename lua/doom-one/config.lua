@@ -32,7 +32,10 @@ function M.setup(opts)
 
   if opts.integrations ~= nil and type(opts.integrations) ~= "table" then
     vim.notify(
-      string.format("[doom-one] integrations must be a table, got '%s'. Using default.", type(opts.integrations)),
+      string.format(
+        "[doom-one] integrations must be a table, got '%s'. Using default.",
+        type(opts.integrations)
+      ),
       vim.log.levels.WARN
     )
     opts.integrations = vim.deepcopy(M.defaults.integrations)

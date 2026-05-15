@@ -5,14 +5,10 @@ M.config = require("doom-one.config")
 local valid_backgrounds = { dark = true, darker = true, light = true }
 local variants = { "dark", "darker", "light" }
 
-function M.setup(opts)
-  M.config.setup(opts)
-end
+function M.setup(opts) M.config.setup(opts) end
 
 function M.load()
-  if vim.g.colors_name then
-    vim.cmd("hi clear")
-  end
+  if vim.g.colors_name then vim.cmd("hi clear") end
 
   vim.o.termguicolors = true
   vim.g.colors_name = "doom-one"
@@ -22,9 +18,7 @@ function M.load()
 
   if valid_backgrounds[background] then
     local bg_value = (background == "light") and "light" or "dark"
-    if vim.o.background ~= bg_value then
-      vim.o.background = bg_value
-    end
+    if vim.o.background ~= bg_value then vim.o.background = bg_value end
   end
 
   local base_palette = require("doom-one.palette").get_palette(background)
@@ -32,9 +26,7 @@ function M.load()
   local highlights = require("doom-one.groups").get(palette, config)
 
   local custom_highlights = config.highlights
-  if type(custom_highlights) == "function" then
-    custom_highlights = custom_highlights(palette)
-  end
+  if type(custom_highlights) == "function" then custom_highlights = custom_highlights(palette) end
   if type(custom_highlights) == "table" then
     highlights = vim.tbl_deep_extend("force", highlights, custom_highlights)
   end
@@ -56,15 +48,16 @@ function M.cycle()
     end
   end
 
-  if idx == nil then
-    idx = 0
-  end
+  if idx == nil then idx = 0 end
 
   local next_idx = (idx % #variants) + 1
   local next_variant = variants[next_idx]
   config.background = next_variant
   M.load()
-  vim.notify(string.format("[doom-one] Switched to '%s' variant", next_variant), vim.log.levels.INFO)
+  vim.notify(
+    string.format("[doom-one] Switched to '%s' variant", next_variant),
+    vim.log.levels.INFO
+  )
 end
 
 function M._command_handler(opts)
@@ -93,7 +86,11 @@ function M._command_handler(opts)
     local config = M.config.options
     local current = config.background or vim.o.background
     vim.notify(
-      string.format("[doom-one] Current variant: '%s' | Transparent: %s", current, tostring(config.transparent)),
+      string.format(
+        "[doom-one] Current variant: '%s' | Transparent: %s",
+        current,
+        tostring(config.transparent)
+      ),
       vim.log.levels.INFO
     )
   else
@@ -105,9 +102,15 @@ function M._command_complete(arglead)
   local trimmed = vim.trim(arglead)
   local words = trimmed == "" and {} or vim.split(trimmed, "%s+")
   if #words == 0 then
-    return vim.tbl_filter(function(a) return a:find(arglead, 1, true) == 1 end, { "cycle", "set", "info" })
+    return vim.tbl_filter(
+      function(a) return a:find(arglead, 1, true) == 1 end,
+      { "cycle", "set", "info" }
+    )
   elseif #words == 1 then
-    return vim.tbl_filter(function(a) return a:find(words[1], 1, true) == 1 end, { "cycle", "set", "info" })
+    return vim.tbl_filter(
+      function(a) return a:find(words[1], 1, true) == 1 end,
+      { "cycle", "set", "info" }
+    )
   elseif words[1] == "set" then
     return vim.tbl_filter(function(v) return v:find(words[2] or "", 1, true) == 1 end, variants)
   end

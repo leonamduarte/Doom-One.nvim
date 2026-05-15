@@ -56,9 +56,7 @@ local function _plugin_available(plugin_repo)
   local mod_name = plugin_require_map[plugin_repo]
   if mod_name then
     local mod_ok, _ = pcall(require, mod_name)
-    if mod_ok then
-      return true
-    end
+    if mod_ok then return true end
   end
 
   local paths = {
@@ -66,9 +64,7 @@ local function _plugin_available(plugin_repo)
     vim.fn.stdpath("data") .. "/lazy",
   }
   for _, path in ipairs(paths) do
-    if vim.fn.globpath(path, plugin_repo, false, true) ~= "" then
-      return true
-    end
+    if vim.fn.globpath(path, plugin_repo, false, true) ~= "" then return true end
   end
 
   return false
@@ -115,15 +111,18 @@ function M.check()
     if valid_bg[opts.background] then
       ok(string.format("Background variant: %s", opts.background))
     else
-      error(string.format("Invalid background variant: %s (expected dark, darker, or light)", opts.background))
+      error(
+        string.format(
+          "Invalid background variant: %s (expected dark, darker, or light)",
+          opts.background
+        )
+      )
     end
   else
     info("Background variant: default (uses vim.o.background)")
   end
 
-  if opts.transparent then
-    info("Transparent mode: enabled")
-  end
+  if opts.transparent then info("Transparent mode: enabled") end
 
   -- Integrations
   if opts.integrations and opts.integrations.all then
@@ -131,9 +130,7 @@ function M.check()
   elseif opts.integrations then
     local enabled = {}
     for name, val in pairs(opts.integrations) do
-      if val and name ~= "all" then
-        table.insert(enabled, name)
-      end
+      if val and name ~= "all" then table.insert(enabled, name) end
     end
     if #enabled > 0 then
       info("Plugin integrations: " .. table.concat(enabled, ", "))
@@ -148,12 +145,11 @@ function M.check()
   local ok_palette, palette_mod = pcall(require, "doom-one.palette")
   if ok_palette then
     local palette = palette_mod.get_palette(opts.background or vim.o.background)
-    local required_colors = { "bg", "fg", "red", "blue", "green", "yellow", "magenta", "cyan", "variable" }
+    local required_colors =
+      { "bg", "fg", "red", "blue", "green", "yellow", "magenta", "cyan", "variable" }
     local missing = {}
     for _, color in ipairs(required_colors) do
-      if palette[color] == nil then
-        table.insert(missing, color)
-      end
+      if palette[color] == nil then table.insert(missing, color) end
     end
     if #missing == 0 then
       ok("Palette contains all required colors")
